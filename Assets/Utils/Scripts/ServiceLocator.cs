@@ -5,26 +5,26 @@ namespace BroCollie
 {
     public static class ServiceLocator
     {
-        private static readonly Dictionary<Type, object> _services = new();
+        private static readonly Dictionary<Type, object> s_services = new();
 
         public static void Register<T>(T serviceInstance)
         {
             if (serviceInstance == null) return;
 
             Type serviceType = typeof(T);
-            _services[serviceType] = serviceInstance;
+            s_services[serviceType] = serviceInstance;
         }
 
         public static void Unregister<T>()
         {
             Type serviceType = typeof(T);
-            _services.Remove(serviceType);
+            s_services.Remove(serviceType);
         }
 
         public static T GetService<T>()
         {
             Type serviceType = typeof(T);
-            if (_services.TryGetValue(serviceType, out object service))
+            if (s_services.TryGetValue(serviceType, out object service))
             {
                 return (T)service;
             }
@@ -33,7 +33,7 @@ namespace BroCollie
 
         public static void ClearServices()
         {
-            _services.Clear();
+            s_services.Clear();
         }
     }
 }

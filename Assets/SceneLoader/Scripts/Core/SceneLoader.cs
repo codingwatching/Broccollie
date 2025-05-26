@@ -12,7 +12,7 @@ namespace BroCollie
 
         public SceneLoader(ISceneEventPublisher eventPublisher)
         {
-            _eventPublisher = eventPublisher ?? throw new ArgumentNullException(nameof(eventPublisher));
+            _eventPublisher = eventPublisher;
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
@@ -25,32 +25,32 @@ namespace BroCollie
         {
             if (_cancellationTokenSource.IsCancellationRequested)
             {
-                _eventPublisher.Publish(new SceneLoadFailEvent(sceneName, "Scene loading cancelled via token."));
+                _eventPublisher?.Publish(new SceneLoadFailEvent(sceneName, "Scene loading cancelled via token."));
                 return;
             }
 
-            _eventPublisher.Publish(new SceneLoadStartEvent(sceneName));
+            _eventPublisher?.Publish(new SceneLoadStartEvent(sceneName));
             AsyncOperation loadOperation = null;
             try
             {
-                loadOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+                loadOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
 
                 while (!loadOperation.isDone && !_cancellationTokenSource.IsCancellationRequested)
                 {
                     float progress = Mathf.Clamp01(loadOperation.progress / 0.9f);
-                    _eventPublisher.Publish(new SceneLoadProgreessEvent(sceneName, progress));
+                    _eventPublisher?.Publish(new SceneLoadProgreessEvent(sceneName, progress));
                     await Awaitable.NextFrameAsync(_cancellationTokenSource.Token);
                 }
-                _eventPublisher.Publish(new SceneLoadCompleteEvent(sceneName));
+                _eventPublisher?.Publish(new SceneLoadCompleteEvent(sceneName));
             }
             catch (OperationCanceledException)
             {
-                _eventPublisher.Publish(new SceneLoadFailEvent(sceneName, "Scene loading cancelled via token."));
+                _eventPublisher?.Publish(new SceneLoadFailEvent(sceneName, "Scene loading cancelled via token."));
                 Debug.LogWarning($"[SceneLoader] Scene loading cancelled via token. Target: '{sceneName}'");
             }
             catch (Exception ex)
             {
-                _eventPublisher.Publish(new SceneLoadFailEvent(sceneName, ex.Message));
+                _eventPublisher?.Publish(new SceneLoadFailEvent(sceneName, ex.Message));
                 Debug.LogError($"[SceneLoader] Scene loading failed. Message: {ex.Message}");
             }
         }
