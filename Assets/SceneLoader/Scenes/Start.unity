@@ -537,6 +537,7 @@ GameObject:
   - component: {fileID: 605042392}
   - component: {fileID: 605042395}
   - component: {fileID: 605042394}
+  - component: {fileID: 605042396}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -610,6 +611,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!225 &605042396
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605042391}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &986442666
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0.047058824, g: 0.047058824, b: 0.047058824, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -847,7 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ce493dfeed1a24b9e68fd9d1d00bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bgImage: {fileID: 986442667}
+  _canvasGroup: {fileID: 605042396}
   _fadeDuration: 1
 --- !u!4 &1400093740
 Transform:

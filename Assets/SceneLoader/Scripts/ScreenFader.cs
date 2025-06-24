@@ -1,29 +1,37 @@
 using System.Threading;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ScreenFader : MonoBehaviour, IFaderAsync
+public class ScreenFader : Singleton<ScreenFader>
 {
-    [SerializeField] private Image _bgImage;
+    [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private float _fadeDuration = 1f;
 
-    public async Awaitable FadeAsync(float targetAlpha, CancellationToken cancellationToken = default)
+    public async Awaitable FadeInAsync(CancellationToken cancellationToken = default)
+    {
+        _canvasGroup.interactable = true;
+        await FadeAsync(1f, cancellationToken);
+    }
+
+    public async Awaitable FadeOutAsync(CancellationToken cancellationToken = default)
+    {
+        await FadeAsync(0f, cancellationToken);
+        _canvasGroup.interactable = false;
+    }
+
+    private async Awaitable FadeAsync(float alpha, CancellationToken cancellationToken = default)
     {
         float elapsedTime = 0f;
-        float startAlpha = _bgImage.color.a;
-        Color color = _bgImage.color;
+        float startAlpha = _canvasGroup.alpha;
 
         while (elapsedTime < _fadeDuration)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
             elapsedTime += Time.deltaTime;
-            color.a = Mathf.Lerp(startAlpha, targetAlpha, Mathf.Clamp01(elapsedTime / _fadeDuration));
-            _bgImage.color = color;
+            _canvasGroup.alpha = Mathf.Lerp(startAlpha, alpha, Mathf.Clamp01(elapsedTime / _fadeDuration));
 
             await Awaitable.NextFrameAsync(cancellationToken);
         }
-        color.a = targetAlpha;
-        _bgImage.color = color;
+        _canvasGroup.alpha = alpha;
     }
 }

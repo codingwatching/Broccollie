@@ -1,4 +1,3 @@
-using BroCollie;
 using UnityEngine;
 
 public class TestSceneController : MonoBehaviour
@@ -7,12 +6,12 @@ public class TestSceneController : MonoBehaviour
 
     private void Start()
     {
-        ServiceLocator.GetService<IFaderAsync>()?.FadeAsync(0f);
+        ServiceLocator.GetService<ScreenFader>()?.FadeOutAsync();
     }
 
     public async void LoadScene()
     {
-        await ServiceLocator.GetService<IFaderAsync>()?.FadeAsync(1f);
-        ServiceLocator.GetService<ISceneLoader>()?.LoadScene(_sceneName);
+        await ServiceLocator.GetService<ScreenFader>()?.FadeInAsync();
+        ServiceLocator.GetService<SceneLoader>()?.LoadScene(_sceneName);
     }
 }
