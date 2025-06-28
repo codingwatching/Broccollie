@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 1827004587}
   - component: {fileID: 1827004586}
   m_Layer: 0
-  m_Name: StartScene
+  m_Name: StageScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1069,6 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f505044ff94602345979e47bec3f967e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _serviceLocator: {fileID: 11400000, guid: 0410cc622ec74d94d899123fcae3902d, type: 2}
   _sceneName: MainMenu
 --- !u!4 &1827004587
 Transform:

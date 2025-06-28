@@ -3,61 +3,43 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : IDisposable
+namespace BroCollie.SceneLoader
 {
-    public event Action OnSceneLoadStart;
-    public event Action<float> OnSceneLoadProgress;
-    public event Action OnSceneLoadComplete;
-    public event Action<string> OnSceneLoadFail;
-
-    private CancellationTokenSource _cancellationTokenSource;
-
-    public SceneLoader()
+    public class SceneLoader : MonoBehaviour, ISceneLoader
     {
-        _cancellationTokenSource = new CancellationTokenSource();
-    }
+        public event Action OnSceneLoadStart;
+        public event Action<float> OnSceneLoadProgress;
+        public event Action OnSceneLoadComplete;
 
-    public void LoadScene(string sceneName)
-    {
-        _ = LoadSceneAsync(sceneName);
-    }
-
-    private async Awaitable LoadSceneAsync(string sceneName)
-    {
-        if (_cancellationTokenSource.IsCancellationRequested)
+        public async Awaitable LoadSceneAsync(string sceneName, CancellationToken cancellationToken = default)
         {
-            OnSceneLoadFail?.Invoke($"Scene loading cancelled via token. Target: '{sceneName}'");
-            return;
-        }
+            if (cancellationToken == default)
+                cancellationToken = destroyCancellationToken;
 
-        OnSceneLoadStart?.Invoke();
-        AsyncOperation loadOperation = null;
-        try
-        {
-            loadOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
-
-            while (!loadOperation.isDone && !_cancellationTokenSource.IsCancellationRequested)
+            OnSceneLoadStart?.Invoke();
+            AsyncOperation loadOperation = null;
+            try
             {
-                float progress = Mathf.Clamp01(loadOperation.progress / 0.9f);
-                OnSceneLoadProgress?.Invoke(progress);
-                await Awaitable.NextFrameAsync(_cancellationTokenSource.Token);
-            }
-            OnSceneLoadComplete?.Invoke();
-        }
-        catch (Exception ex)
-        {
-            OnSceneLoadFail?.Invoke(ex.Message);
-            Debug.LogError($"[SceneLoader] Scene loading failed. Message: {ex.Message}");
-        }
-    }
+                loadOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
 
-    public void Dispose()
-    {
-        if (_cancellationTokenSource != null)
-        {
-            _cancellationTokenSource.Cancel();
-            _cancellationTokenSource.Dispose();
-            _cancellationTokenSource = null;
+                while (!loadOperation.isDone)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+
+                    float progress = Mathf.Clamp01(loadOperation.progress / 0.9f);
+                    OnSceneLoadProgress?.Invoke(progress);
+                    await Awaitable.NextFrameAsync(cancellationToken);
+                }
+                OnSceneLoadComplete?.Invoke();
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.Log($"[SceneLoader] Scene loading canceled.");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"[SceneLoader] Scene loading failed. Message: {ex.Message}");
+            }
         }
     }
 }
