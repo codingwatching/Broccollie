@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9be723e03426824795952b9194597ec, type: 3}
-  m_Name: ServiceLocator
+  m_Script: {fileID: 11500000, guid: cee9c74f172799d4190b4877178472db, type: 3}
+  m_Name: AuthenticationEventChannel
   m_EditorClassIdentifier: 
