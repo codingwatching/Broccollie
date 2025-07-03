@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,11 +10,8 @@ namespace BroCollie.SceneLoader
         public event Action<float> OnSceneLoadProgress;
         public event Action OnSceneLoadComplete;
 
-        public async Awaitable LoadSceneAsync(string sceneName, CancellationToken cancellationToken = default)
+        public async Awaitable LoadSceneAsync(string sceneName)
         {
-            if (cancellationToken == default)
-                cancellationToken = destroyCancellationToken;
-
             OnSceneLoadStart?.Invoke();
             AsyncOperation loadOperation = null;
             try
@@ -24,11 +20,12 @@ namespace BroCollie.SceneLoader
 
                 while (!loadOperation.isDone)
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
+                    destroyCancellationToken.ThrowIfCancellationRequested();
 
                     float progress = Mathf.Clamp01(loadOperation.progress / 0.9f);
                     OnSceneLoadProgress?.Invoke(progress);
-                    await Awaitable.NextFrameAsync(cancellationToken);
+
+                    await Awaitable.NextFrameAsync(destroyCancellationToken);
                 }
                 OnSceneLoadComplete?.Invoke();
             }

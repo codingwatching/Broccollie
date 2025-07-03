@@ -1,10 +1,14 @@
-﻿using System.Threading;
+﻿using System;
 using UnityEngine;
 
 namespace BroCollie.SceneLoader
 {
     public interface ISceneLoader
     {
-        Awaitable LoadSceneAsync(string sceneName, CancellationToken cancellationToken = default);
+        event Action OnSceneLoadStart;
+        event Action<float> OnSceneLoadProgress;
+        event Action OnSceneLoadComplete;
+
+        Awaitable LoadSceneAsync(string sceneName);
     }
 }
