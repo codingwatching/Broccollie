@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace BroCollie.SceneLoader
 {
-    public class SceneLoader : MonoBehaviour, ISceneLoader
+    public class SceneLoader : ISceneLoader
     {
         public event Action OnSceneLoadStart;
         public event Action<float> OnSceneLoadProgress;
@@ -20,18 +20,12 @@ namespace BroCollie.SceneLoader
 
                 while (!loadOperation.isDone)
                 {
-                    destroyCancellationToken.ThrowIfCancellationRequested();
-
                     float progress = Mathf.Clamp01(loadOperation.progress / 0.9f);
                     OnSceneLoadProgress?.Invoke(progress);
 
-                    await Awaitable.NextFrameAsync(destroyCancellationToken);
+                    await Awaitable.NextFrameAsync();
                 }
                 OnSceneLoadComplete?.Invoke();
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.Log($"[SceneLoader] Scene loading canceled.");
             }
             catch (Exception ex)
             {

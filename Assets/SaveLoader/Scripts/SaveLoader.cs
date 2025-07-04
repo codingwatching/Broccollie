@@ -14,20 +14,22 @@ namespace BroCollie.SaveLoad
         private T _saveData;
         private ISaveSerializer _saveSerializer;
         private SaveLoadSetting _setting;
-        private string _savePath;
+        private string _saveDirectoryPath;
+        private string _saveFilePath;
 
         public SaveLoader(T saveData, ISaveSerializer saveSerializer, SaveLoadSetting setting)
         {
             _saveData = saveData;
             _saveSerializer = saveSerializer;
             _setting = setting;
-            _savePath = Path.Combine(Application.persistentDataPath, setting.SaveDirectory);
+            _saveDirectoryPath = Path.Combine(Application.persistentDataPath, setting.SaveDirectory);
+            _saveFilePath = Path.Combine(_saveDirectoryPath, setting.SaveFileName);
         }
 
         public async Task LoadDataAsync()
         {
-            CreateSaveDirectoryIfNeeded(_savePath);
-            if (!File.Exists(_savePath))
+            CreateSaveDirectoryIfNeeded(_saveDirectoryPath);
+            if (!File.Exists(_saveFilePath))
             {
                 Debug.Log("[SaveLoader] Saved data does not exist.");
                 return;
@@ -35,7 +37,7 @@ namespace BroCollie.SaveLoad
 
             try
             {
-                using FileStream fileStream = new(_savePath, FileMode.Open);
+                using FileStream fileStream = new(_saveFilePath, FileMode.Open);
                 if (_setting.UseCryptoStream)
                 {
                     using Aes aes = Aes.Create();
@@ -66,7 +68,7 @@ namespace BroCollie.SaveLoad
 
         public async Task SaveDataAsync()
         {
-            CreateSaveDirectoryIfNeeded(_savePath);
+            CreateSaveDirectoryIfNeeded(_saveDirectoryPath);
             try
             {
                 using Aes aes = Aes.Create();
@@ -74,7 +76,7 @@ namespace BroCollie.SaveLoad
                 byte[] iv = aes.IV;
                 await SaveKeyAsync(_setting.AesKeyName, key);
 
-                using FileStream fileStream = new(_savePath, FileMode.Create);
+                using FileStream fileStream = new(_saveFilePath, FileMode.Create);
                 if (_setting.UseCryptoStream)
                 {
                     await fileStream.WriteAsync(iv, 0, iv.Length);

@@ -932,7 +932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f505044ff94602345979e47bec3f967e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serviceLocator: {fileID: 11400000, guid: 0410cc622ec74d94d899123fcae3902d, type: 2}
   _sceneName: MainMenu
 --- !u!4 &1827004587
 Transform:
@@ -990,18 +989,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1068196450550083009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3362408497766868012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f51ebbb75caa79548878365d8c7ee04c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &2439101075094334754
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1043,23 +1030,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4201371231706136931}
   m_CullTransparentMesh: 1
---- !u!1 &3362408497766868012
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4039521437329628728}
-  - component: {fileID: 1068196450550083009}
-  m_Layer: 0
-  m_Name: SceneLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!225 &3518756199014217077
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1101,21 +1071,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5377142382239686876}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4039521437329628728
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3362408497766868012}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4201371231706136931
@@ -1195,8 +1150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0934fdc5c73b34542b6ed2c0a24649c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serviceLocator: {fileID: 11400000, guid: 0410cc622ec74d94d899123fcae3902d, type: 2}
-  _sceneLoader: {fileID: 1068196450550083009}
   _screenFader: {fileID: 2533530403304530684}
 --- !u!224 &5377142382239686876
 RectTransform:
@@ -1266,7 +1219,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 3774699595458358196}
   - {fileID: 3835904920970874048}
-  - {fileID: 4039521437329628728}
   - {fileID: 1827004587}
   - {fileID: 330585546}
   - {fileID: 410087041}
