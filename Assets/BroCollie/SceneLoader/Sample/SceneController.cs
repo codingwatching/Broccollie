@@ -1,5 +1,5 @@
-using BroCollie.SceneLoader;
-using BroCollie.Utils;
+using BroCollie.SceneLoad;
+using BroCollie.Util;
 using UnityEngine;
 
 public class SceneController : MonoBehaviour

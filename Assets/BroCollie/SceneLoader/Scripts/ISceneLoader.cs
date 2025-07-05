@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace BroCollie.SceneLoader
+namespace BroCollie.SceneLoad
 {
     public interface ISceneLoader
     {

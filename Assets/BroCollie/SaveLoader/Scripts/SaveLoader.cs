@@ -100,7 +100,7 @@ namespace BroCollie.SaveLoad
             if (Directory.Exists(path)) return;
 
             Directory.CreateDirectory(path);
-            Debug.Log("[SaveLoader] Save directory created.");
+            Debug.Log($"[SaveLoader] Save directory created. Path: {path}");
         }
 
         private async Task StreamReadAsync(Stream stream, T data)
@@ -108,7 +108,7 @@ namespace BroCollie.SaveLoad
             using StreamReader streamReader = new(stream);
             string serialized = await streamReader.ReadToEndAsync();
             _saveSerializer.Deserialize(serialized, data);
-            Debug.Log("[SaveLoader] Data loaded.");
+            Debug.Log($"[SaveLoader] Data loaded. Path: {_saveFilePath}");
         }
 
         private async Task StreamWriterAsync(Stream stream, T data)
@@ -116,7 +116,7 @@ namespace BroCollie.SaveLoad
             using StreamWriter streamWriter = new(stream);
             string serialized = _saveSerializer.Serialize(data);
             await streamWriter.WriteAsync(serialized);
-            Debug.Log("[SaveLoader] Data saved.");
+            Debug.Log($"[SaveLoader] Data saved. Path: {_saveFilePath}");
         }
 
         private async Task SaveKeyAsync(string keyName, byte[] key)

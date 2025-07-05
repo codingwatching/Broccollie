@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace BroCollie.SceneLoader
+namespace BroCollie.SceneLoad
 {
     public class SceneLoader : ISceneLoader
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BroCollie.Utils
+namespace BroCollie.Util
 {
     public static class ServiceLocator
     {
