@@ -1,0 +1,13 @@
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\SlotMachineModule.dll
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\SlotMachineModule.deps.json
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\SlotMachineModule.pdb
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\Unity.Services.CloudCode.Apis.dll
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\Unity.Services.CloudCode.Core.dll
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\Google.Protobuf.dll
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\Grpc.Core.Api.dll
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\Grpc.Net.Client.dll
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\Grpc.Net.Common.dll
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\JsonSubTypes.dll
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\barrymighty\AppData\Local\Temp\SlotMachineModule\module-compilation\Newtonsoft.Json.dll

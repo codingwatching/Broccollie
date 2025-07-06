@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SceneLoader/Sample/Start.unity
+    path: Assets/BroCollie/SceneLoader/Sample/Start.unity
     guid: 0b9c43b1cbedb994a8ce990567176bc5
   - enabled: 1
-    path: Assets/SceneLoader/Sample/MainMenu.unity
+    path: Assets/BroCollie/SceneLoader/Sample/MainMenu.unity
     guid: 4f4d5e4a8a10e9d43a5f397a389998ec
   - enabled: 1
-    path: Assets/SceneLoader/Sample/Stage.unity
+    path: Assets/BroCollie/SceneLoader/Sample/Stage.unity
     guid: a80a1e73fa1b3d64c83b5e1b2ce4e160
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

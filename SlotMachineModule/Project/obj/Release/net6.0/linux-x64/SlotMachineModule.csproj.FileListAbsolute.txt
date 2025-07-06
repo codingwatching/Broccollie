@@ -1,0 +1,13 @@
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\bin\Release\net6.0\linux-x64\SlotMachineModule.deps.json
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\bin\Release\net6.0\linux-x64\SlotMachineModule.dll
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\bin\Release\net6.0\linux-x64\SlotMachineModule.pdb
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\obj\Release\net6.0\linux-x64\SlotMachineModule.csproj.AssemblyReference.cache
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\obj\Release\net6.0\linux-x64\SlotMachineModule.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\obj\Release\net6.0\linux-x64\SlotMachineModule.AssemblyInfoInputs.cache
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\obj\Release\net6.0\linux-x64\SlotMachineModule.AssemblyInfo.cs
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\obj\Release\net6.0\linux-x64\SlotMachineModule.csproj.CoreCompileInputs.cache
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\obj\Release\net6.0\linux-x64\SlotMachineModule.sourcelink.json
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\obj\Release\net6.0\linux-x64\SlotMachineModule.dll
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\obj\Release\net6.0\linux-x64\refint\SlotMachineModule.dll
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\obj\Release\net6.0\linux-x64\SlotMachineModule.pdb
+C:\Users\barrymighty\workspace\UnityProjects\BroCollie\SlotMachineModule\Project\obj\Release\net6.0\linux-x64\ref\SlotMachineModule.dll

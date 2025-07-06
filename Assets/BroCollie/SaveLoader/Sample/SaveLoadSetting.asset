@@ -15,4 +15,4 @@ MonoBehaviour:
   SaveDirectory: Save
   SaveFileName: SaveFile
   AesKeyName: savekey
-  UseCryptoStream: 1
+  UseCryptoStream: 0
